@@ -1,0 +1,23 @@
+import java.util.Scanner;
+
+public class LeakyBucket {
+    public static void main(String[] args) throws InterruptedException {
+        int n, incoming, outgoing, store = 0, bucketsize;
+        Scanner scan = new Scanner(System.in);
+        bucketsize = scan.nextInt();
+        outgoing = scan.nextInt();
+        n = scan.nextInt();
+        incoming = scan.nextInt();
+        while (n != 0) {
+            if (incoming <= (bucketsize - store)) {
+                store += incoming;
+            } else {
+                store = bucketsize;
+            }
+            store -= outgoing;
+            n--;
+            Thread.sleep(3000);
+        }
+        scan.close();
+    }
+}
